@@ -2,7 +2,7 @@ namespace empresa{
     export class Cliente extends Pessoa{
 
         private _codigo: number;
-        private _saldo: number;
+        private _saldo: number = 0;
 
         constructor (codigo:number){
             super();
@@ -18,10 +18,21 @@ namespace empresa{
             return this._saldo;
         }
 
-        set saldo(saldo:number){
-            this._saldo = saldo;
+        public deposita(valor:number){
+            this ._saldo += valor;
+
         }
+        public comprar(valorCompra:number):boolean{
+            if (this._saldo >= valorCompra){
 
+                this._saldo -= valorCompra;
+                return true; 
+            }
 
+            else{
+                return false;
+            }
+
+        }
     }
 }
